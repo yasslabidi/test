@@ -1,10 +1,23 @@
 pipeline {
-    agent any
-
+    agent {
+        node {
+            label 'slave_build'   // This ensures the job runs on the agent with the 'slave_build' label
+        }
+    }
     stages {
-        stage('Hello') {
+        stage('Build') {
             steps {
-                echo 'Hello World'
+                echo 'Building...'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing...'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying...'
             }
         }
     }
